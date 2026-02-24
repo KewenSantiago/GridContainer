@@ -12,6 +12,9 @@
     --bg-card-purple: #4D21C1;
     --text-dark: #1F1F1F;
     --text-light: #FFFFFF;
+
+    --bg-yellow: hsl(31, 66%, 93%);
+    --bg-purple-light: hsl(254, 88%, 90%);
 }
 
 body {
@@ -21,6 +24,179 @@ body {
 
     min-height: 100vh;
     display: grid;
-    place-items: center
-    ;
+    place-items: center;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "create   main      main      schedule"
+        "create   manage    posting   schedule"
+        "write    stat      follower  nonstop";
+    gap: 1.5rem;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.card {
+    background-color: var(--bg-card-white);
+    border-radius: 1rem;
+    padding: 2rem;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.card-create { grid-area: create; }
+.card-main-promo { grid-area: main; }
+.card-schedule { grid-area: schedule; }
+.card-write-ai { grid-area: write; }
+.card-manage { grid-area: manage; }
+.card-posting { grid-area: posting; }
+.card-growth-stat { grid-area: stat; }
+.card-follower-growth { grid-area: follower; }
+.card-non-stop { grid-area: nonstop; }
+
+.card-main-promo,
+.card-non-stop {
+    background-color: var(--bg-card-purple);
+    color: var(--text-light);
+}
+
+.card h1,
+.card h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.card img {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1.5rem;
+}
+
+.highlight-blue {
+    color: #007BFF
+}
+
+.highlight-green {
+    color: #28A745;
+}
+
+.card-main-promo h1 {
+    font-size: 2.5rem;
+    color: var(--text-light);
+}
+.card-main-promo img {
+    width: auto;
+    margin-top: 1rem;
+}
+.card-main-promo p {
+    color: #E0E0E0;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.card-schedule {
+    display: flex;
+    flex-direction: column;
+}
+.card-schedule img {
+    order: 2; 
+}
+
+.card-manage {
+    display: flex;
+    flex-direction: column;
+}
+.card-manage img {
+    order: -1;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.card-growth-stat .stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.card-growth-stat .stat-description {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.card-non-stop h2 {
+    color: var(--text-light);
+}
+.card-non-stop img {
+    order: -1;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        display: block;
+        place-items: normal;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        
+        grid-template-areas: none;
+        
+        padding: 1.5rem;
+        
+        gap: 1rem;
+    }
+
+    .card-create { grid-area: auto; }
+    .card-main-promo { grid-area: auto; }
+    .card-schedule { grid-area: auto; }
+    .card-write-ai { grid-area: auto; }
+    .card-manage { grid-area: auto; }
+    .card-posting { grid-area: auto; }
+    .card-growth-stat { grid-area: auto; }
+    .card-follower-growth { grid-area: auto; }
+    .card-non-stop { grid-area: auto; }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .card h1,
+    .card h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-main-promo h1 {
+        font-size: 2rem;
+    }
+
+    .card-growth-stat .stat-number {
+        font-size: 3rem;
+    }
+}
+
+.card-create,
+.card-write-ai,
+.card-posting {
+    background-color: var(--bg-yellow);
+}
+
+.card-schedule {
+    background-color: var(--bg-purple-light);
+}
+
+.card-main-promo,
+.card-non-stop {
+    background-color: var(--bg-card-purple);
+    color: white;
 }
